@@ -21,14 +21,14 @@ const AddForm = (props) => {
         e.preventDefault();
         if (state.name === "" || state.position === "" || state.nickname === "") {
             //return errorMessage = "Name, position and nickname fields are required.";
-            return props.errorSmurf("Name, position, and nickname is required.");
+            props.errorSmurf("Name, position, and nickname is required.");
 
         }
         else {
             props.addSmurf(state)
         }
     }
-    let errorMessage = props.errorMessage;
+    const errorMessage = props.errorMessage;
 
     return(<section>
         <h2>Add Smurf</h2>
@@ -50,7 +50,7 @@ const AddForm = (props) => {
                 <textarea onChange={handleChange} value={state.description} name="description" id="description" />
             </div>
             {
-                errorMessage && <div data-testid="errorAlert" className="alert alert-danger" role="alert">Error: {errorMessage}</div>
+                props.errorMessage && <div data-testid="errorAlert" className="alert alert-danger" role="alert">Error: {props.errorMessage}</div>
             }
             <button>Submit Smurf</button>
         </form>
